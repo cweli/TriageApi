@@ -36,11 +36,18 @@ public class SampleEventParser {
         String status = json.optString("status");
         String kind = json.optString("kind");
         String filename = json.optString("filename");
+        String url = json.optString("url");
         boolean isPrivate = json.optBoolean("private");
         Event[] events = optEventArray(json.optJSONArray("tasks"));
         String submitted = json.optString("submitted");
         String completed = json.optString("completed");
-        return new SampleEvents(id, status, kind, filename, isPrivate, events, submitted, completed);
+        String name = "";
+        if(kind.equals("file")) {
+            name = filename;
+        } else if(kind.equals("url")) {
+            name = url;
+        }
+        return new SampleEvents(id, status, kind, name, isPrivate, events, submitted, completed);
     }
 
     private Event[] optEventArray(JSONArray input) {
@@ -66,4 +73,5 @@ public class SampleEventParser {
 
         return new Event(id, status, target, pick);
     }
+
 }

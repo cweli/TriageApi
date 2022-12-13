@@ -26,6 +26,7 @@ public class SampleEvents {
     private String status;
     private String kind;
     private String fileName;
+    private String url;
     private boolean isPrivate;
     private Event[] sampleEvents;
     private String submitted;
@@ -48,13 +49,20 @@ public class SampleEvents {
         this.id = id;
         this.status = status;
         this.kind = kind;
-        this.fileName = fileName;
         this.isPrivate = isPrivate;
         this.sampleEvents = sampleEvents;
         this.submitted = submitted;
         this.completed = completed;
         empty = false;
+
+        if(kind.equals("file")) {
+            this.fileName = fileName;
+        } else if(kind.equals("url")) {
+            this.url = fileName;
+        }
     }
+
+
 
     public String getId() {
         return id;
@@ -86,6 +94,14 @@ public class SampleEvents {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public boolean isPrivate() {
@@ -122,5 +138,10 @@ public class SampleEvents {
 
     public boolean isEmpty() {
         return empty;
+    }
+
+    @Override
+    public String toString() {
+        return String.join(", ", id, status, kind, fileName, url, String.valueOf(isPrivate), submitted, completed );
     }
 }
