@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -25,7 +28,7 @@ public class TriageFileSection {
     private int offset;
     private int virtualSize;
     private int size;
-    private String[] characteristics;
+    private List<String> characteristics;
     private boolean empty;
 
     public TriageFileSection() {
@@ -33,11 +36,11 @@ public class TriageFileSection {
         offset = -1;
         virtualSize = -1;
         size = -1;
-        characteristics = new String[0];
+        characteristics = new ArrayList<>();
         empty = true;
     }
 
-    public TriageFileSection(String name, int offset, int virtualSize, int size, String[] characteristics) {
+    public TriageFileSection(String name, int offset, int virtualSize, int size, List<String> characteristics) {
         this.name = name;
         this.offset = offset;
         this.virtualSize = virtualSize;
@@ -78,11 +81,11 @@ public class TriageFileSection {
         this.size = size;
     }
 
-    public String[] getCharacteristics() {
+    public List<String> getCharacteristics() {
         return characteristics;
     }
 
-    public void setCharacteristics(String[] characteristics) {
+    public void setCharacteristics(List<String> characteristics) {
         this.characteristics = characteristics;
     }
 

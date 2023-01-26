@@ -16,30 +16,33 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
  */
 public class OverviewTarget extends TargetDesc {
 
-    private String[] tasks;
-    private String[] tags;
-    private String[] family;
-    private Signature[] signatures;
+    private List<String> tasks;
+    private List<String> tags;
+    private List<String> family;
+    private List<Signature> signatures;
     private OverviewIOCs iocs;
     private boolean empty;
 
     public OverviewTarget() {
         super();
-        tasks = new String[0];
-        tags = new String[0];
-        family = new String[0];
-        signatures = new Signature[0];
+        tasks = new ArrayList<>();
+        tags = new ArrayList<>();
+        family = new ArrayList<>();
+        signatures = new ArrayList<>();
         iocs = new OverviewIOCs();
         empty = true;
     }
 
-    public OverviewTarget(TargetDesc targetDesc, String[] tasks, String[] tags, String[] families, Signature[] signatures, OverviewIOCs overviewIOCs) {
+    public OverviewTarget(TargetDesc targetDesc, List<String> tasks, List<String> tags, List<String> families, List<Signature> signatures, OverviewIOCs overviewIOCs) {
         super(targetDesc.getId(), targetDesc.getScore(), targetDesc.getSubmitted(), targetDesc.getCompatCompleted(), targetDesc.getTarget(), targetDesc.getPick(), targetDesc.getType(), targetDesc.getSize(), targetDesc.getMd5(), targetDesc.getSha1(), targetDesc.getSha256(), targetDesc.getSha512(), targetDesc.getSsdeep(), targetDesc.getFileType(), targetDesc.getStaticTags(), targetDesc.getCompatFamily());
         this.tasks = tasks;
         this.tags = tags;
@@ -49,35 +52,35 @@ public class OverviewTarget extends TargetDesc {
         empty = false;
     }
 
-    public String[] getTasks() {
+    public List<String> getTasks() {
         return tasks;
     }
 
-    public void setTasks(String[] tasks) {
+    public void setTasks(List<String> tasks) {
         this.tasks = tasks;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public String[] getFamilies() {
+    public List<String> getFamilies() {
         return family;
     }
 
-    public void setFamilies(String[] families) {
+    public void setFamilies(List<String> families) {
         this.family = families;
     }
 
-    public Signature[] getSignatures() {
+    public List<Signature> getSignatures() {
         return signatures;
     }
 
-    public void setSignatures(Signature[] signatures) {
+    public void setSignatures(List<Signature> signatures) {
         this.signatures = signatures;
     }
 

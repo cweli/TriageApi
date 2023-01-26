@@ -16,52 +16,55 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
  */
 public class OverviewIOCs {
 
-    private String[] urls;
-    private String[] domains;
-    private String[] ips;
+    private List<String> urls;
+    private List<String> domains;
+    private List<String> ips;
     private boolean empty;
 
     public OverviewIOCs() {
         empty = true;
-        urls = new String[0];
-        domains = new String[0];
-        ips = new String[0];
+        urls = new ArrayList<>();
+        domains = new ArrayList<>();
+        ips = new ArrayList<>();
     }
 
-    public OverviewIOCs(String[] urls, String[] domains, String[] ips) {
+    public OverviewIOCs(List<String> urls, List<String> domains, List<String> ips) {
         this.urls = urls;
         this.domains = domains;
         this.ips = ips;
         empty = false;
     }
 
-    public String[] getUrls() {
+    public List<String> getUrls() {
         return urls;
     }
 
-    public void setUrls(String[] urls) {
+    public void setUrls(List<String> urls) {
         this.urls = urls;
     }
 
-    public String[] getDomains() {
+    public List<String> getDomains() {
         return domains;
     }
 
-    public void setDomains(String[] domains) {
+    public void setDomains(List<String> domains) {
         this.domains = domains;
     }
 
-    public String[] getIps() {
+    public List<String> getIps() {
         return ips;
     }
 
-    public void setIps(String[] ips) {
+    public void setIps(List<String> ips) {
         this.ips = ips;
     }
 

@@ -16,23 +16,26 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
  */
 public class NetworkDomainResponse {
 
-    private String[] domains;
-    private String[] ip;
+    private List<String> domains;
+    private List<String> ip;
     private boolean empty;
 
     public NetworkDomainResponse() {
         empty = true;
-        domains = new String[0];
-        ip = new String[0];
+        domains = new ArrayList<>();
+        ip = new ArrayList<>();
     }
 
-    public NetworkDomainResponse(String[] domains, String[] ip) {
+    public NetworkDomainResponse(List<String> domains, List<String> ip) {
         empty = false;
         this.domains = domains;
         this.ip = ip;
@@ -42,19 +45,19 @@ public class NetworkDomainResponse {
         return empty;
     }
 
-    public String[] getDomains() {
+    public List<String> getDomains() {
         return domains;
     }
 
-    public void setDomains(String[] domains) {
+    public void setDomains(List<String> domains) {
         this.domains = domains;
     }
 
-    public String[] getIp() {
+    public List<String> getIp() {
         return ip;
     }
 
-    public void setIp(String[] ip) {
+    public void setIp(List<String> ip) {
         this.ip = ip;
     }
 

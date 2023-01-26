@@ -16,32 +16,35 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
  */
 public class OverviewExtracted extends Extract {
 
-    private String[] tasks;
+    private List<String> tasks;
     private boolean empty;
 
     public OverviewExtracted() {
         super();
-        tasks = new String[0];
+        tasks = new ArrayList<>();
         empty = true;
     }
 
-    public OverviewExtracted(Extract extract, String[] tasks) {
+    public OverviewExtracted(Extract extract, List<String> tasks) {
         super(extract.getDumpedFile(), extract.getResource(), extract.getConfig(), extract.getPath(), extract.getRansomNote(), extract.getDropper(), extract.getCredentials());
         this.tasks = tasks;
         empty = false;
     }
 
-    public String[] getTasks() {
+    public List<String> getTasks() {
         return tasks;
     }
 
-    public void setTasks(String[] tasks) {
+    public void setTasks(List<String> tasks) {
         this.tasks = tasks;
     }
 

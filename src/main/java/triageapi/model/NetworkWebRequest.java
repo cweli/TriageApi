@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -28,17 +31,17 @@ public class NetworkWebRequest {
     private String url;
 
     //Possible null
-    private String[] headers;
+    private List<String> headers;
     private boolean empty;
 
     public NetworkWebRequest() {
         empty = true;
         method = "";
         url = "";
-        headers = new String[0];
+        headers = new ArrayList<>();
     }
 
-    public NetworkWebRequest(String method, String url, String[] headers) {
+    public NetworkWebRequest(String method, String url, List<String> headers) {
         empty = false;
         this.method = method;
         this.url = url;
@@ -65,11 +68,11 @@ public class NetworkWebRequest {
         this.url = url;
     }
 
-    public String[] getHeaders() {
+    public List<String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(String[] headers) {
+    public void setHeaders(List<String> headers) {
         this.headers = headers;
     }
 

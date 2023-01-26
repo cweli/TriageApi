@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -25,9 +28,9 @@ public class Signature {
     private String label;
     private String name;
     private int score;
-    private String[] ttp;
-    private String[] tags;
-    private Indicator[] indicators;
+    private List<String> ttp;
+    private List<String> tags;
+    private List<Indicator> indicators;
     private String yaraRule;
     private String description;
     private String url;
@@ -38,15 +41,15 @@ public class Signature {
         label = "";
         name = "";
         score = -1;
-        ttp = new String[0];
-        tags = new String[0];
-        indicators = new Indicator[0];
+        ttp = new ArrayList<>();
+        tags = new ArrayList<>();
+        indicators = new ArrayList<>();
         yaraRule = "";
         description = "";
         url = "";
     }
 
-    public Signature(String label, String name, int score, String[] ttp, String[] tags, Indicator[] indicators, String yaraRule, String description, String url) {
+    public Signature(String label, String name, int score, List<String> ttp, List<String> tags, List<Indicator> indicators, String yaraRule, String description, String url) {
         empty = false;
         this.label = label;
         this.name = name;
@@ -87,27 +90,27 @@ public class Signature {
         this.score = score;
     }
 
-    public String[] getTtp() {
+    public List<String> getTtp() {
         return ttp;
     }
 
-    public void setTtp(String[] ttp) {
+    public void setTtp(List<String> ttp) {
         this.ttp = ttp;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public Indicator[] getIndicators() {
+    public List<Indicator> getIndicators() {
         return indicators;
     }
 
-    public void setIndicators(Indicator[] indicators) {
+    public void setIndicators(List<Indicator> indicators) {
         this.indicators = indicators;
     }
 

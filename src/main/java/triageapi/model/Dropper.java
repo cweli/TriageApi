@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -26,7 +29,7 @@ public class Dropper {
     private String language;
     private String source;
     private String deobfuscated;
-    private DropperURL[] urls;
+    private List<DropperURL> urls;
     private boolean empty;
 
     public Dropper() {
@@ -35,10 +38,10 @@ public class Dropper {
         language = "";
         source = "";
         deobfuscated = "";
-        urls = new DropperURL[0];
+        urls = new ArrayList<>();
     }
 
-    public Dropper(String family, String language, String source, String deobfuscated, DropperURL[] urls) {
+    public Dropper(String family, String language, String source, String deobfuscated, List<DropperURL> urls) {
         empty = false;
         this.family = family;
         this.language = language;
@@ -83,11 +86,11 @@ public class Dropper {
         this.deobfuscated = deobfuscated;
     }
 
-    public DropperURL[] getUrls() {
+    public List<DropperURL> getUrls() {
         return urls;
     }
 
-    public void setUrls(DropperURL[] urls) {
+    public void setUrls(List<DropperURL> urls) {
         this.urls = urls;
     }
 }

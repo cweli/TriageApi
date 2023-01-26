@@ -40,7 +40,7 @@ public class ListParser extends GenericParser {
         if (jsonArray == null) {
             return output;
         }
-        output.addAll(Arrays.asList(optStringArray(jsonArray)));
+        output.addAll(optStringList(jsonArray));
         return output;
     }
 }

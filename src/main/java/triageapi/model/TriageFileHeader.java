@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -24,19 +27,19 @@ public class TriageFileHeader {
 
     private int entryPoint;
     private int magicNumber;
-    private String[] dllCharacteristics;
-    private String[] fileCharacteristics;
+    private List<String> dllCharacteristics;
+    private List<String> fileCharacteristics;
     private boolean empty;
 
     public TriageFileHeader() {
         entryPoint = -1;
         magicNumber = -1;
-        dllCharacteristics = new String[0];
-        fileCharacteristics = new String[0];
+        dllCharacteristics = new ArrayList<>();
+        fileCharacteristics = new ArrayList<>();
         empty = true;
     }
 
-    public TriageFileHeader(int entryPoint, int magicNumber, String[] dllCharacteristics, String[] fileCharacteristics) {
+    public TriageFileHeader(int entryPoint, int magicNumber, List<String> dllCharacteristics, List<String> fileCharacteristics) {
         this.entryPoint = entryPoint;
         this.magicNumber = magicNumber;
         this.dllCharacteristics = dllCharacteristics;
@@ -60,19 +63,19 @@ public class TriageFileHeader {
         this.magicNumber = magicNumber;
     }
 
-    public String[] getDllCharacteristics() {
+    public List<String> getDllCharacteristics() {
         return dllCharacteristics;
     }
 
-    public void setDllCharacteristics(String[] dllCharacteristics) {
+    public void setDllCharacteristics(List<String> dllCharacteristics) {
         this.dllCharacteristics = dllCharacteristics;
     }
 
-    public String[] getFileCharacteristics() {
+    public List<String> getFileCharacteristics() {
         return fileCharacteristics;
     }
 
-    public void setFileCharacteristics(String[] fileCharacteristics) {
+    public void setFileCharacteristics(List<String> fileCharacteristics) {
         this.fileCharacteristics = fileCharacteristics;
     }
 

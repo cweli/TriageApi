@@ -16,6 +16,8 @@
  */
 package triageapi.json;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -58,23 +60,23 @@ public class TriageOverviewParser extends GenericParser {
 
         String version = json.optString("version");
         OverviewSample sample = getOverviewSample(json.optJSONObject("sample"));
-        TaskSummary[] tasks = optTaskSummaryArray(json.optJSONObject("tasks"));
+        List<TaskSummary> tasks = optTaskSummaryList(json.optJSONObject("tasks"));
         OverviewAnalysis analysis = getOverviewAnalysis(json.optJSONObject("analysis"));
-        OverviewTarget[] targets = optOverviewTargetArray(json.optJSONArray("targets"));
-        ReportTaskFailure[] errors = optReportTaskFailureArray(json.optJSONArray("errors"));
-        Signature[] signatures = optSignatureArray(json.optJSONArray("signatures"));
-        OverviewExtracted[] extracted = optOverviewExtractedArray(json.optJSONArray("extracted"));
+        List<OverviewTarget> targets = optOverviewTargetList(json.optJSONArray("targets"));
+        List<ReportTaskFailure> errors = optReportTaskFailureList(json.optJSONArray("errors"));
+        List<Signature> signatures = optSignatureList(json.optJSONArray("signatures"));
+        List<OverviewExtracted> extracted = optOverviewExtractedList(json.optJSONArray("extracted"));
 
         return new TriageOverview(version, sample, tasks, analysis, targets, errors, signatures, extracted);
     }
 
-    protected OverviewExtracted[] optOverviewExtractedArray(JSONArray input) {
+    protected List<OverviewExtracted> optOverviewExtractedList(JSONArray input) {
+        List<OverviewExtracted> output = new ArrayList<>();
         if (input == null) {
-            return new OverviewExtracted[0];
+            return output;
         }
-        OverviewExtracted[] output = new OverviewExtracted[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getOverviewExtracted(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getOverviewExtracted(input.optJSONObject(i)));
         }
         return output;
     }
@@ -85,18 +87,18 @@ public class TriageOverviewParser extends GenericParser {
         }
 
         Extract extract = getExtract(json);
-        String[] tasks = optStringArray(json.optJSONArray("tasks"));
+        List<String> tasks = optStringList(json.optJSONArray("tasks"));
 
         return new OverviewExtracted(extract, tasks);
     }
 
-    protected OverviewTarget[] optOverviewTargetArray(JSONArray input) {
+    protected List<OverviewTarget> optOverviewTargetList(JSONArray input) {
+        List<OverviewTarget> output = new ArrayList<>();
         if (input == null) {
-            return new OverviewTarget[0];
+            return output;
         }
-        OverviewTarget[] output = new OverviewTarget[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getOverviewTarget(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getOverviewTarget(input.optJSONObject(i)));
         }
         return output;
     }
@@ -107,10 +109,10 @@ public class TriageOverviewParser extends GenericParser {
         }
 
         TargetDesc targetDesc = getTargetDesc(json);
-        String[] tasks = optStringArray(json.optJSONArray("tasks"));
-        String[] tags = optStringArray(json.optJSONArray("tags"));
-        String[] families = optStringArray(json.optJSONArray("family"));
-        Signature[] signatures = optSignatureArray(json.optJSONArray("signatures"));
+        List<String> tasks = optStringList(json.optJSONArray("tasks"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
+        List<String> families = optStringList(json.optJSONArray("family"));
+        List<Signature> signatures = optSignatureList(json.optJSONArray("signatures"));
         OverviewIOCs overviewIOCs = getOverviewIOCs(json.optJSONObject("iocs"));
 
         return new OverviewTarget(targetDesc, tasks, tags, families, signatures, overviewIOCs);
@@ -122,24 +124,22 @@ public class TriageOverviewParser extends GenericParser {
         }
 
         int score = json.optInt("score");
-        String[] families = optStringArray(json.optJSONArray("family"));
-        String[] tags = optStringArray(json.optJSONArray("tags"));
+        List<String> families = optStringList(json.optJSONArray("family"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
 
         return new OverviewAnalysis(score, families, tags);
     }
 
-    protected TaskSummary[] optTaskSummaryArray(JSONObject input) {
+    protected List<TaskSummary> optTaskSummaryList(JSONObject input) {
+        List<TaskSummary> output = new ArrayList<>();
         if (input == null) {
-            return new TaskSummary[0];
+            return output;
         }
         Set<String> keySet = input.keySet();
-        TaskSummary[] output = new TaskSummary[keySet.size()];
 
-        int i = 0;
         for (String key : keySet) {
             JSONObject x = input.optJSONObject(key);
-            output[i] = getTaskSummary(x);
-            i++;
+            output.add(getTaskSummary(x));
         }
 
         return output;
@@ -154,8 +154,8 @@ public class TriageOverviewParser extends GenericParser {
         String kind = json.optString("kind");
         String name = json.optString("name");
         String status = json.optString("status");
-        String[] ttps = optStringArray(json.optJSONArray("ttp"));
-        String[] tags = optStringArray(json.optJSONArray("tags"));
+        List<String> ttps = optStringList(json.optJSONArray("ttp"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
         int score = json.optInt("score");
         String target = json.optString("target");
         String backend = json.optString("backend");
@@ -189,21 +189,21 @@ public class TriageOverviewParser extends GenericParser {
             return new OverviewIOCs();
         }
 
-        String[] urls = optStringArray(json.optJSONArray("urls"));
-        String[] domains = optStringArray(json.optJSONArray("domains"));
-        String[] ips = optStringArray(json.optJSONArray("ips"));
+        List<String> urls = optStringList(json.optJSONArray("urls"));
+        List<String> domains = optStringList(json.optJSONArray("domains"));
+        List<String> ips = optStringList(json.optJSONArray("ips"));
 
         return new OverviewIOCs(urls, domains, ips);
     }
 
     //Leftover
-    protected Credentials[] optCredentialsArray(JSONArray input) {
+    protected List<Credentials> optCredentialsArray(JSONArray input) {
+        List<Credentials> output = new ArrayList<>();
         if (input == null) {
-            return new Credentials[0];
+            return output;
         }
-        Credentials[] output = new Credentials[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getCredentials(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getCredentials(input.optJSONObject(i)));
         }
         return output;
     }

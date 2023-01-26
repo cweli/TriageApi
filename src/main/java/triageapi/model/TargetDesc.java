@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -36,7 +39,7 @@ public class TargetDesc {
     private String sha512;
     private String ssdeep;
     private String fileType;
-    private String[] staticTags;
+    private List<String> staticTags;
     private String compatFamily;
     private boolean empty;
 
@@ -56,11 +59,11 @@ public class TargetDesc {
         sha512 = "";
         ssdeep = "";
         fileType = "";
-        staticTags = new String[0];
+        staticTags = new ArrayList<>();
         compatFamily = "";
     }
 
-    public TargetDesc(String id, int score, String submitted, String compatCompleted, String target, String pick, String type, int size, String md5, String sha1, String sha256, String sha512, String ssdeep, String fileType, String[] staticTags, String compatFamily) {
+    public TargetDesc(String id, int score, String submitted, String compatCompleted, String target, String pick, String type, int size, String md5, String sha1, String sha256, String sha512, String ssdeep, String fileType, List<String> staticTags, String compatFamily) {
         empty = false;
         this.id = id;
         this.score = score;
@@ -196,11 +199,11 @@ public class TargetDesc {
         this.fileType = fileType;
     }
 
-    public String[] getStaticTags() {
+    public List<String> getStaticTags() {
         return staticTags;
     }
 
-    public void setStaticTags(String[] staticTags) {
+    public void setStaticTags(List<String> staticTags) {
         this.staticTags = staticTags;
     }
 

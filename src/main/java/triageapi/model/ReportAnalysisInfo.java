@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -24,16 +27,16 @@ public class ReportAnalysisInfo {
 
     private int score;
     private String family;
-    private String[] tags;
-    private String[] ttp;
-    private String[] features;
+    private List<String> tags;
+    private List<String> ttp;
+    private List<String> features;
     private String submitted;
     private String reported;
     private int maxTimeNetwork;
     private int maxTimeKernel;
     private String backend;
     private String resource;
-    private String[] resourceTags;
+    private List<String> resourceTags;
     private String platform;
     private boolean empty;
 
@@ -41,20 +44,20 @@ public class ReportAnalysisInfo {
         empty = true;
         score = -1;
         family = "";
-        tags = new String[0];
-        ttp = new String[0];
-        features = new String[0];
+        tags = new ArrayList<>();
+        ttp = new ArrayList<>();
+        features = new ArrayList<>();
         submitted = "";
         reported = "";
         maxTimeNetwork = -1;
         maxTimeKernel = -1;
         backend = "";
         resource = "";
-        resourceTags = new String[0];
+        resourceTags = new ArrayList<>();
         platform = "";
     }
 
-    public ReportAnalysisInfo(int score, String family, String[] tags, String[] ttp, String[] features, String submitted, String reported, int maxTimeNetwork, int maxTimeKernel, String backend, String resource, String[] resourceTags, String platform) {
+    public ReportAnalysisInfo(int score, String family, List<String> tags, List<String> ttp, List<String> features, String submitted, String reported, int maxTimeNetwork, int maxTimeKernel, String backend, String resource, List<String> resourceTags, String platform) {
         empty = false;
         this.score = score;
         this.family = family;
@@ -91,27 +94,27 @@ public class ReportAnalysisInfo {
         this.family = family;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public String[] getTtp() {
+    public List<String> getTtp() {
         return ttp;
     }
 
-    public void setTtp(String[] ttp) {
+    public void setTtp(List<String> ttp) {
         this.ttp = ttp;
     }
 
-    public String[] getFeatures() {
+    public List<String> getFeatures() {
         return features;
     }
 
-    public void setFeatures(String[] features) {
+    public void setFeatures(List<String> features) {
         this.features = features;
     }
 
@@ -163,11 +166,11 @@ public class ReportAnalysisInfo {
         this.resource = resource;
     }
 
-    public String[] getResourceTags() {
+    public List<String> getResourceTags() {
         return resourceTags;
     }
 
-    public void setResourceTags(String[] resourceTags) {
+    public void setResourceTags(List<String> resourceTags) {
         this.resourceTags = resourceTags;
     }
 

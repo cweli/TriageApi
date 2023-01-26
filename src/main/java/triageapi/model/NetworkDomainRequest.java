@@ -16,21 +16,24 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
  */
 public class NetworkDomainRequest {
 
-    private String[] domains;
+    private List<String> domains;
     private boolean empty;
 
     public NetworkDomainRequest() {
         empty = true;
-        domains = new String[0];
+        domains = new ArrayList<>();
     }
 
-    public NetworkDomainRequest(String[] domains) {
+    public NetworkDomainRequest(List<String> domains) {
         empty = false;
         this.domains = domains;
     }
@@ -39,11 +42,11 @@ public class NetworkDomainRequest {
         return empty;
     }
 
-    public String[] getDomains() {
+    public List<String> getDomains() {
         return domains;
     }
 
-    public void setDomains(String[] domains) {
+    public void setDomains(List<String> domains) {
         this.domains = domains;
     }
 

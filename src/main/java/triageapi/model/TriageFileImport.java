@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -23,16 +26,16 @@ package triageapi.model;
 public class TriageFileImport {
 
     private String dllName;
-    private String[] imports;
+    private List<String> imports;
     private boolean empty;
 
     public TriageFileImport() {
         dllName = "";
-        imports = new String[0];
+        imports = new ArrayList<>();
         empty = true;
     }
 
-    public TriageFileImport(String dllName, String[] imports) {
+    public TriageFileImport(String dllName, List<String> imports) {
         this.dllName = dllName;
         this.imports = imports;
         empty = false;
@@ -46,11 +49,11 @@ public class TriageFileImport {
         this.dllName = dllName;
     }
 
-    public String[] getImports() {
+    public List<String> getImports() {
         return imports;
     }
 
-    public void setImports(String[] imports) {
+    public void setImports(List<String> imports) {
         this.imports = imports;
     }
 

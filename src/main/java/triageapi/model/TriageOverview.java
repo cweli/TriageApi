@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * An overview of the given submission, including information from all reports
  * (both dynamic and static)
@@ -26,27 +29,27 @@ public class TriageOverview {
 
     private String version;
     private OverviewSample sample;
-    private TaskSummary[] tasks;
+    private List<TaskSummary> tasks;
     private OverviewAnalysis analysis;
-    private OverviewTarget[] targets;
-    private ReportTaskFailure[] errors;
-    private Signature[] signatures;
-    private OverviewExtracted[] extracted;
+    private List<OverviewTarget> targets;
+    private List<ReportTaskFailure> errors;
+    private List<Signature> signatures;
+    private List<OverviewExtracted> extracted;
     private boolean empty;
 
     public TriageOverview() {
         empty = true;
         this.version = "";
         this.sample = new OverviewSample();
-        this.tasks = new TaskSummary[0];
+        this.tasks = new ArrayList<>();
         this.analysis = new OverviewAnalysis();
-        this.targets = new OverviewTarget[0];
-        this.errors = new ReportTaskFailure[0];
-        this.signatures = new Signature[0];
-        this.extracted = new OverviewExtracted[0];
+        this.targets = new ArrayList<>();
+        this.errors = new ArrayList<>();
+        this.signatures = new ArrayList<>();
+        this.extracted = new ArrayList<>();
     }
 
-    public TriageOverview(String version, OverviewSample sample, TaskSummary[] tasks, OverviewAnalysis analysis, OverviewTarget[] targets, ReportTaskFailure[] errors, Signature[] signatures, OverviewExtracted[] extracted) {
+    public TriageOverview(String version, OverviewSample sample, List<TaskSummary> tasks, OverviewAnalysis analysis, List<OverviewTarget> targets, List<ReportTaskFailure> errors, List<Signature> signatures, List<OverviewExtracted> extracted) {
         empty = false;
         this.version = version;
         this.sample = sample;
@@ -57,6 +60,7 @@ public class TriageOverview {
         this.signatures = signatures;
         this.extracted = extracted;
     }
+
 
     public String getVersion() {
         return version;
@@ -74,11 +78,11 @@ public class TriageOverview {
         this.sample = sample;
     }
 
-    public TaskSummary[] getTasks() {
+    public List<TaskSummary> getTasks() {
         return tasks;
     }
 
-    public void setTasks(TaskSummary[] tasks) {
+    public void setTasks(List<TaskSummary> tasks) {
         this.tasks = tasks;
     }
 
@@ -90,35 +94,35 @@ public class TriageOverview {
         this.analysis = analysis;
     }
 
-    public OverviewTarget[] getTargets() {
+    public List<OverviewTarget> getTargets() {
         return targets;
     }
 
-    public void setTargets(OverviewTarget[] targets) {
+    public void setTargets(List<OverviewTarget> targets) {
         this.targets = targets;
     }
 
-    public ReportTaskFailure[] getErrors() {
+    public List<ReportTaskFailure> getErrors() {
         return errors;
     }
 
-    public void setErrors(ReportTaskFailure[] errors) {
+    public void setErrors(List<ReportTaskFailure> errors) {
         this.errors = errors;
     }
 
-    public Signature[] getSignatures() {
+    public List<Signature> getSignatures() {
         return signatures;
     }
 
-    public void setSignatures(Signature[] signatures) {
+    public void setSignatures(List<Signature> signatures) {
         this.signatures = signatures;
     }
 
-    public OverviewExtracted[] getExtracted() {
+    public List<OverviewExtracted> getExtracted() {
         return extracted;
     }
 
-    public void setExtracted(OverviewExtracted[] extracted) {
+    public void setExtracted(List<OverviewExtracted> extracted) {
         this.extracted = extracted;
     }
 

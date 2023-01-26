@@ -159,8 +159,8 @@ public class StaticReportParser extends GenericParser {
         String sha256 = json.optString("sha256");
         String sha512 = json.optString("sha512");
         String ssdeep = json.optString("ssdeep");
-        String[] extensions = optStringArray(json.optJSONArray("exts"));
-        String[] tags = optStringArray(json.optJSONArray("tags"));
+        List<String> extensions = optStringList(json.optJSONArray("exts"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
         int depth = json.optInt("depth");
         String kind = json.optString("kind");
         boolean selected = json.optBoolean("selected");
@@ -219,8 +219,8 @@ public class StaticReportParser extends GenericParser {
 
         int entryPoint = json.optInt("entry_point");
         int magicNumber = json.optInt("magic_number");
-        String[] dllCharacteristics = optStringArray(json.optJSONArray("dll_characteristics"));
-        String[] fileCharacteristics = optStringArray(json.optJSONArray("file_characteristics"));
+        List<String> dllCharacteristics = optStringList(json.optJSONArray("dll_characteristics"));
+        List<String> fileCharacteristics = optStringList(json.optJSONArray("file_characteristics"));
 
         return new TriageFileHeader(entryPoint, magicNumber, dllCharacteristics, fileCharacteristics);
     }
@@ -242,7 +242,7 @@ public class StaticReportParser extends GenericParser {
         }
 
         String dllName = json.optString("dll_name");
-        String[] imports = optStringArray(json.optJSONArray("imports"));
+        List<String> imports = optStringList(json.optJSONArray("imports"));
 
         return new TriageFileImport(dllName, imports);
     }
@@ -256,7 +256,7 @@ public class StaticReportParser extends GenericParser {
         int offset = json.optInt("offset");
         int virtualSize = json.optInt("virtual_size");
         int size = json.optInt("size");
-        String[] characteristics = optStringArray(json.optJSONArray("characteristics"));
+        List<String> characteristics = optStringList(json.optJSONArray("characteristics"));
 
         return new TriageFileSection(name, offset, virtualSize, size, characteristics);
     }

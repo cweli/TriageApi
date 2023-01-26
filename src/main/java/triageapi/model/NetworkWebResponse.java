@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -23,10 +26,10 @@ package triageapi.model;
 public class NetworkWebResponse {
 
     private String status;
-    private String[] headers;
+    private List<String> headers;
     private boolean empty;
 
-    public NetworkWebResponse(String status, String[] headers) {
+    public NetworkWebResponse(String status, List<String> headers) {
         empty = false;
         this.status = status;
         this.headers = headers;
@@ -35,7 +38,7 @@ public class NetworkWebResponse {
     public NetworkWebResponse() {
         empty = true;
         status = "";
-        headers = new String[0];
+        headers = new ArrayList<>();
     }
 
     public boolean isEmpty() {
@@ -50,11 +53,11 @@ public class NetworkWebResponse {
         this.status = status;
     }
 
-    public String[] getHeaders() {
+    public List<String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(String[] headers) {
+    public void setHeaders(List<String> headers) {
         this.headers = headers;
     }
 

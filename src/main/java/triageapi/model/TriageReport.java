@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -26,13 +29,13 @@ public class TriageReport {
     private String taskId;
     private TargetDesc sample;
     private TargetDesc task;
-    private ReportTaskFailure[] errors;
+    private List<ReportTaskFailure> errors;
     private ReportAnalysisInfo analysis;
-    private Process[] processes;
-    private Signature[] signatures;
+    private List<Process> processes;
+    private List<Signature> signatures;
     private NetworkReport networkReport;
-    private Dump[] dumped;
-    private Extract[] extracted;
+    private List<Dump> dumped;
+    private List<Extract> extracted;
     private boolean isEmpty;
 
     public TriageReport() {
@@ -40,17 +43,17 @@ public class TriageReport {
         this.taskId = "";
         this.sample = new TargetDesc();
         this.task = new TargetDesc();
-        this.errors = new ReportTaskFailure[0];
+        this.errors = new ArrayList<>();
         this.analysis = new ReportAnalysisInfo();
-        this.processes = new Process[0];
-        this.signatures = new Signature[0];
+        this.processes = new ArrayList<>();
+        this.signatures = new ArrayList<>();
         this.networkReport = new NetworkReport();
-        this.dumped = new Dump[0];
-        this.extracted = new Extract[0];
+        this.dumped = new ArrayList<>();
+        this.extracted = new ArrayList<>();
         this.isEmpty = true;
     }
 
-    public TriageReport(String version, String taskId, TargetDesc sample, TargetDesc task, ReportTaskFailure[] errors, ReportAnalysisInfo analysis, Process[] processes, Signature[] signatures, NetworkReport networkReport, Dump[] dumped, Extract[] extracted) {
+    public TriageReport(String version, String taskId, TargetDesc sample, TargetDesc task, List<ReportTaskFailure> errors, ReportAnalysisInfo analysis, List<Process> processes, List<Signature> signatures, NetworkReport networkReport, List<Dump> dumped, List<Extract> extracted) {
         this.version = version;
         this.taskId = taskId;
         this.sample = sample;
@@ -97,11 +100,11 @@ public class TriageReport {
         this.task = task;
     }
 
-    public ReportTaskFailure[] getErrors() {
+    public List<ReportTaskFailure> getErrors() {
         return errors;
     }
 
-    public void setErrors(ReportTaskFailure[] errors) {
+    public void setErrors(List<ReportTaskFailure> errors) {
         this.errors = errors;
     }
 
@@ -113,19 +116,19 @@ public class TriageReport {
         this.analysis = analysis;
     }
 
-    public Process[] getProcesses() {
+    public List<Process> getProcesses() {
         return processes;
     }
 
-    public void setProcesses(Process[] processes) {
+    public void setProcesses(List<Process> processes) {
         this.processes = processes;
     }
 
-    public Signature[] getSignatures() {
+    public List<Signature> getSignatures() {
         return signatures;
     }
 
-    public void setSignatures(Signature[] signatures) {
+    public void setSignatures(List<Signature> signatures) {
         this.signatures = signatures;
     }
 
@@ -137,19 +140,19 @@ public class TriageReport {
         this.networkReport = networkReport;
     }
 
-    public Dump[] getDumped() {
+    public List<Dump> getDumped() {
         return dumped;
     }
 
-    public void setDumped(Dump[] dumped) {
+    public void setDumped(List<Dump> dumped) {
         this.dumped = dumped;
     }
 
-    public Extract[] getExtracted() {
+    public List<Extract> getExtracted() {
         return extracted;
     }
 
-    public void setExtracted(Extract[] extracted) {
+    public void setExtracted(List<Extract> extracted) {
         this.extracted = extracted;
     }
 

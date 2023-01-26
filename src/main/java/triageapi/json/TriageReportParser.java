@@ -16,6 +16,8 @@
  */
 package triageapi.json;
 
+import java.util.List;
+
 import triageapi.model.Dump;
 import triageapi.model.Extract;
 import triageapi.model.NetworkReport;
@@ -54,14 +56,14 @@ public class TriageReportParser extends GenericParser {
         String version = json.optString("version");
         TargetDesc sample = getTargetDesc(json.optJSONObject("sample"));
         TargetDesc task = getTargetDesc(json.optJSONObject("task"));
-        ReportTaskFailure[] errors = optReportTaskFailureArray(json.optJSONArray("errors"));
+        List<ReportTaskFailure> errors = optReportTaskFailureList(json.optJSONArray("errors"));
         ReportAnalysisInfo analysis = getReportAnalysisInfo(json.optJSONObject("analysis"));
-        triageapi.model.Process[] processes = optProcessArray(json.optJSONArray("processes"));
-        Signature[] signatures = optSignatureArray(json.optJSONArray("signatures"));
+        List<triageapi.model.Process> processes = optProcessList(json.optJSONArray("processes"));
+        List<Signature> signatures = optSignatureList(json.optJSONArray("signatures"));
         NetworkReport networkReport = getNetworkReport(json.optJSONObject("network"));
         //debug is skipped
-        Dump[] dumped = optDumpArray(json.optJSONArray("dumped"));
-        Extract[] extracted = optExtractArray(json.optJSONArray("extracted"));
+        List<Dump> dumped = optDumpList(json.optJSONArray("dumped"));
+        List<Extract> extracted = optExtractList(json.optJSONArray("extracted"));
         return new TriageReport(version, taskId, sample, task, errors, analysis, processes, signatures, networkReport, dumped, extracted);
     }
 }

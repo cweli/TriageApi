@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -23,18 +26,18 @@ package triageapi.model;
 public class OverviewAnalysis {
 
     private int score;
-    private String[] family;
-    private String[] tags;
+    private List<String> family;
+    private List<String> tags;
     private boolean empty;
 
     public OverviewAnalysis() {
         empty = true;
         score = -1;
-        family = new String[0];
-        tags = new String[0];
+        family = new ArrayList<>();
+        tags = new ArrayList<>();
     }
 
-    public OverviewAnalysis(int score, String[] family, String[] tags) {
+    public OverviewAnalysis(int score, List<String> family, List<String> tags) {
         empty = false;
         this.score = score;
         this.family = family;
@@ -49,19 +52,19 @@ public class OverviewAnalysis {
         this.score = score;
     }
 
-    public String[] getFamily() {
+    public List<String> getFamily() {
         return family;
     }
 
-    public void setFamily(String[] family) {
+    public void setFamily(List<String> family) {
         this.family = family;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

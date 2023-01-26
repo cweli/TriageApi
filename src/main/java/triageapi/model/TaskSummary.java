@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -26,8 +29,8 @@ public class TaskSummary {
     private String kind;
     private String name;
     private String status;
-    private String[] ttps;
-    private String[] tags;
+    private List<String> ttps;
+    private List<String> tags;
     private int score;
     private String target;
     private String backend;
@@ -47,8 +50,8 @@ public class TaskSummary {
         this.kind = "";
         this.name = "";
         this.status = "";
-        this.ttps = new String[0];
-        this.tags = new String[0];
+        this.ttps = new ArrayList<>();
+        this.tags = new ArrayList<>();
         this.score = -1;
         this.target = "";
         this.backend = "";
@@ -62,7 +65,7 @@ public class TaskSummary {
         this.pick = "";
     }
 
-    public TaskSummary(String sample, String kind, String name, String status, String[] ttps, String[] tags, int score, String target, String backend, String resource, String platform, String taskName, String failure, int queueId, String pick, int sigs, int timeout) {
+    public TaskSummary(String sample, String kind, String name, String status, List<String> ttps, List<String> tags, int score, String target, String backend, String resource, String platform, String taskName, String failure, int queueId, String pick, int sigs, int timeout) {
         empty = false;
         this.sample = sample;
         this.kind = kind;
@@ -119,19 +122,19 @@ public class TaskSummary {
         this.status = status;
     }
 
-    public String[] getTtps() {
+    public List<String> getTtps() {
         return ttps;
     }
 
-    public void setTtps(String[] ttps) {
+    public void setTtps(List<String> ttps) {
         this.ttps = ttps;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

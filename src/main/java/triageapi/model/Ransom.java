@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -24,10 +27,10 @@ public class Ransom {
 
     private String family;
     private String target;
-    private String[] emails;
-    private String[] wallets;
-    private String[] urls;
-    private String[] contact;
+    private List<String> emails;
+    private List<String> wallets;
+    private List<String> urls;
+    private List<String> contact;
     private String note;
     private boolean empty;
 
@@ -35,14 +38,14 @@ public class Ransom {
         empty = true;
         family = "";
         target = "";
-        emails = new String[0];
-        wallets = new String[0];
-        urls = new String[0];
-        contact = new String[0];
+        emails = new ArrayList<>();
+        wallets = new ArrayList<>();
+        urls = new ArrayList<>();
+        contact = new ArrayList<>();
         note = "";
     }
 
-    public Ransom(String family, String target, String[] emails, String[] wallets, String[] urls, String[] contact, String note) {
+    public Ransom(String family, String target, List<String> emails, List<String> wallets, List<String> urls, List<String> contact, String note) {
         empty = false;
         this.family = family;
         this.target = target;
@@ -73,35 +76,35 @@ public class Ransom {
         this.target = target;
     }
 
-    public String[] getEmails() {
+    public List<String> getEmails() {
         return emails;
     }
 
-    public void setEmails(String[] emails) {
+    public void setEmails(List<String> emails) {
         this.emails = emails;
     }
 
-    public String[] getWallets() {
+    public List<String> getWallets() {
         return wallets;
     }
 
-    public void setWallets(String[] wallets) {
+    public void setWallets(List<String> wallets) {
         this.wallets = wallets;
     }
 
-    public String[] getUrls() {
+    public List<String> getUrls() {
         return urls;
     }
 
-    public void setUrls(String[] urls) {
+    public void setUrls(List<String> urls) {
         this.urls = urls;
     }
     
-    public String[] getContact() {
+    public List<String> getContact() {
         return contact;
     }
 
-    public void setContact(String[] contact) {
+    public void setContact(List<String> contact) {
         this.contact = contact;
     }
 

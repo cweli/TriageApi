@@ -54,18 +54,18 @@ import triageapi.model.TargetDesc;
 public abstract class GenericParser {
 
     /**
-     * Converts a given JSONArray object into a String array with all values
+     * Converts a given JSONArray object into a List of Strings with all values
      *
      * @param input the JSONArray to convert
      * @return the string array with all values
      */
-    protected String[] optStringArray(JSONArray input) {
+    protected List<String> optStringList(JSONArray input) {
+        List<String> output = new ArrayList<>();
         if (input == null) {
-            return new String[0];
+            return output;
         }
-        String[] output = new String[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = input.optString(i);
+        for (int i = 0; i < input.length(); i++) {
+            output.add(input.optString(i));
         }
         return output;
     }
@@ -97,13 +97,13 @@ public abstract class GenericParser {
         return LocalDateTime.ofInstant(instant, ZoneOffset.UTC);
     }
 
-    protected Signature[] optSignatureArray(JSONArray input) {
+    protected List<Signature> optSignatureList(JSONArray input) {
+        List<Signature> output = new ArrayList<>();
         if (input == null) {
-            return new Signature[0];
+            return output;
         }
-        Signature[] output = new Signature[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getSignature(input.getJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getSignature(input.getJSONObject(i)));
         }
         return output;
     }
@@ -115,22 +115,22 @@ public abstract class GenericParser {
         String label = json.optString("label");
         String name = json.optString("name");
         int score = json.optInt("score");
-        String[] ttp = optStringArray(json.optJSONArray("ttp"));
-        String[] tags = optStringArray(json.optJSONArray("tags"));
-        Indicator[] indicators = optIndicatorArray(json.optJSONArray("indicators"));
+        List<String> ttp = optStringList(json.optJSONArray("ttp"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
+        List<Indicator> indicators = optIndicatorList(json.optJSONArray("indicators"));
         String yaraRule = json.optString("yara_rule");
         String description = json.optString("desc");
         String url = json.optString("url");
         return new Signature(label, name, score, ttp, tags, indicators, yaraRule, description, url);
     }
 
-    protected Indicator[] optIndicatorArray(JSONArray input) {
+    protected List<Indicator> optIndicatorList(JSONArray input) {
+        List<Indicator> output = new ArrayList<>();
         if (input == null) {
-            return new Indicator[0];
+            return output;
         }
-        Indicator[] output = new Indicator[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getIndicator(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getIndicator(input.optJSONObject(i)));
         }
         return output;
     }
@@ -153,68 +153,68 @@ public abstract class GenericParser {
         return new Indicator(ioc, description, at, sourcePid, sourceProcId, targetPid, targetProcId, flow, dumpFile, resource, yaraRule);
     }
 
-    protected Extract[] optExtractArray(JSONArray input) {
+    protected List<Extract> optExtractList(JSONArray input) {
+        List<Extract> output = new ArrayList<>();
         if (input == null) {
-            return new Extract[0];
+            return output;
         }
-        Extract[] output = new Extract[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getExtract(input.getJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getExtract(input.getJSONObject(i)));
         }
         return output;
     }
 
-    protected Dump[] optDumpArray(JSONArray input) {
+    protected List<Dump> optDumpList(JSONArray input) {
+        List<Dump> output = new ArrayList<>();
         if (input == null) {
-            return new Dump[0];
+            return output;
         }
-        Dump[] output = new Dump[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getDump(input.getJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getDump(input.getJSONObject(i)));
         }
         return output;
     }
 
-    protected triageapi.model.Process[] optProcessArray(JSONArray input) {
+    protected List<triageapi.model.Process> optProcessList(JSONArray input) {
+        List<triageapi.model.Process> output = new ArrayList<>();
         if (input == null) {
-            return new triageapi.model.Process[0];
+            return output;
         }
-        triageapi.model.Process[] output = new triageapi.model.Process[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getProcess(input.getJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getProcess(input.getJSONObject(i)));
         }
         return output;
     }
 
-    protected ReportTaskFailure[] optReportTaskFailureArray(JSONArray input) {
+    protected List<ReportTaskFailure> optReportTaskFailureList(JSONArray input) {
+        List<ReportTaskFailure> output = new ArrayList<>();
         if (input == null) {
-            return new ReportTaskFailure[0];
+            return output;
         }
-        ReportTaskFailure[] output = new ReportTaskFailure[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getReportTaskFailure(input.getJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getReportTaskFailure(input.getJSONObject(i)));
         }
         return output;
     }
 
-    protected DropperURL[] optDropperUrlArray(JSONArray input) {
+    protected List<DropperURL> optDropperUrlList(JSONArray input) {
+        List<DropperURL> output = new ArrayList<>();
         if (input == null) {
-            return new DropperURL[0];
+            return output;
         }
-        DropperURL[] output = new DropperURL[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getDropperURL(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getDropperURL(input.optJSONObject(i)));
         }
         return output;
     }
 
-    protected Key[] optKeyArray(JSONArray input) {
+    protected List<Key> optKeyList(JSONArray input) {
+        List<Key> output = new ArrayList<>();
         if (input == null) {
-            return new Key[0];
+            return output;
         }
-        Key[] output = new Key[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getKey(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getKey(input.optJSONObject(i)));
         }
         return output;
     }
@@ -271,7 +271,7 @@ public abstract class GenericParser {
         String ssdeep = json.optString("ssdeep");
         String fileType = json.optString("filetype");
         //static_tags
-        String[] staticTags = optStringArray(json.optJSONArray("static_tags"));
+        List<String> staticTags = optStringList(json.optJSONArray("static_tags"));
         String compatFamily = json.optString("family");
 
         return new TargetDesc(id, score, submitted, compatCompleted, target, pick, type, size, md5, sha1, sha256, sha512, ssdeep, fileType, staticTags, compatFamily);
@@ -294,16 +294,16 @@ public abstract class GenericParser {
         }
         int score = json.optInt("score");
         String family = json.optString("family");
-        String[] tags = optStringArray(json.getJSONArray("tags"));
-        String[] ttp = optStringArray(json.optJSONArray("ttp"));
-        String[] features = optStringArray(json.optJSONArray("features"));
+        List<String> tags = optStringList(json.getJSONArray("tags"));
+        List<String> ttp = optStringList(json.optJSONArray("ttp"));
+        List<String> features = optStringList(json.optJSONArray("features"));
         String submitted = json.optString("submitted");
         String reported = json.optString("reported");
         int maxTimeNetwork = json.optInt("max_time_network");
         int maxTimeKernel = json.optInt("max_time_kernel");
         String backend = json.optString("backend");
         String resource = json.optString("resource");
-        String[] resourceTags = optStringArray(json.optJSONArray("resource_tags"));
+        List<String> resourceTags = optStringList(json.optJSONArray("resource_tags"));
         String platform = json.optString("platform");
         return new ReportAnalysisInfo(score, family, tags, ttp, features, submitted, reported, maxTimeNetwork, maxTimeKernel, backend, resource, resourceTags, platform);
     }
@@ -316,7 +316,7 @@ public abstract class GenericParser {
         int parentProcId = json.optInt("procid_parent");
         int pid = json.optInt("pid");
         int ppid = json.optInt("ppid");
-        //TODO string on windows, string[] on linux: fix
+        //TODO string on windows, List<String> on linux: fix
         String cmd = json.optString("cmd");
         String image = json.optString("image");
         boolean orig = json.optBoolean("orig");
@@ -410,25 +410,25 @@ public abstract class GenericParser {
             return new Config();
         }
         String family = json.optString("family");
-        String[] tags = optStringArray(json.optJSONArray("tags"));
+        List<String> tags = optStringList(json.optJSONArray("tags"));
         String rule = json.optString("rule");
-        String[] c2 = optStringArray(json.optJSONArray("c2"));
-        String[] decoy = optStringArray(json.optJSONArray("decoy"));
+        List<String> c2 = optStringList(json.optJSONArray("c2"));
+        List<String> decoy = optStringList(json.optJSONArray("decoy"));
         String version = json.optString("version");
         String botnet = json.optString("botnet");
         String campaign = json.optString("campaign");
-        String[] mutex = optStringArray(json.optJSONArray("mutex"));
-        String[] wallet = optStringArray(json.optJSONArray("wallet"));
-        String[] dns = optStringArray(json.optJSONArray("dns"));
-        Key[] keys = optKeyArray(json.optJSONArray("keys"));
-        String[] webInject = optStringArray(json.optJSONArray("webinject"));
-        String[] commandLines = optStringArray(json.optJSONArray("command_lines"));
+        List<String> mutex = optStringList(json.optJSONArray("mutex"));
+        List<String> wallet = optStringList(json.optJSONArray("wallet"));
+        List<String> dns = optStringList(json.optJSONArray("dns"));
+        List<Key> keys = optKeyList(json.optJSONArray("keys"));
+        List<String> webInject = optStringList(json.optJSONArray("webinject"));
+        List<String> commandLines = optStringList(json.optJSONArray("command_lines"));
         String listenAddr = json.optString("listen_addr");
         int listenPort = json.optInt("listen_port");
-        String[] listenFor = optStringArray(json.optJSONArray("listen_for"));
+        List<String> listenFor = optStringList(json.optJSONArray("listen_for"));
         byte[][] shellcode = optByteArrayArray(json.optJSONArray("shellcode"));
-        Credentials[] credentials = optCredentialsArray(json.optJSONArray("credentials"));
-        String[] extractedPe = optStringArray(json.optJSONArray("extracted_pe"));
+        List<Credentials> credentials = optCredentialsArray(json.optJSONArray("credentials"));
+        List<String> extractedPe = optStringList(json.optJSONArray("extracted_pe"));
         Map<String, String> attributes = optMapStringString(json.optJSONObject("attr"));
         String raw = json.optString("raw");
         return new Config(family, tags, rule, c2, decoy, version, botnet, campaign, mutex, wallet, dns, keys, webInject, commandLines, listenAddr, listenPort, listenFor, shellcode, extractedPe, credentials, attributes, raw);
@@ -454,10 +454,10 @@ public abstract class GenericParser {
         }
         String family = json.optString("family");
         String target = json.optString("target");
-        String[] emails = optStringArray(json.optJSONArray("emails"));
-        String[] wallets = optStringArray(json.optJSONArray("wallets"));
-        String[] urls = optStringArray(json.optJSONArray("urls"));
-        String[] contact = optStringArray(json.optJSONArray("contact"));
+        List<String> emails = optStringList(json.optJSONArray("emails"));
+        List<String> wallets = optStringList(json.optJSONArray("wallets"));
+        List<String> urls = optStringList(json.optJSONArray("urls"));
+        List<String> contact = optStringList(json.optJSONArray("contact"));
         String note = json.optString("note");
         return new Ransom(family, target, emails, wallets, urls, contact, note);
 
@@ -471,13 +471,11 @@ public abstract class GenericParser {
         String language = json.optString("language");
         String source = json.optString("source");
         String deobfuscated = json.optString("deobfuscated");
-        DropperURL[] urls;
+        List<DropperURL> urls = new ArrayList<>();
 
         JSONArray array = json.optJSONArray("urls");
-        if (array == null) {
-            urls = new DropperURL[0];
-        } else {
-            urls = optDropperUrlArray(json.optJSONArray("urls"));
+        if (array != null) {
+            urls = optDropperUrlList(json.optJSONArray("urls"));
         }
         return new Dropper(family, language, source, deobfuscated, urls);
     }
@@ -486,7 +484,7 @@ public abstract class GenericParser {
         if (json == null) {
             return new NetworkDomainRequest();
         }
-        String[] domains = optStringArray(json.optJSONArray("domains"));
+        List<String> domains = optStringList(json.optJSONArray("domains"));
         return new NetworkDomainRequest(domains);
     }
 
@@ -494,8 +492,8 @@ public abstract class GenericParser {
         if (json == null) {
             return new NetworkDomainResponse();
         }
-        String[] domains = optStringArray(json.optJSONArray("domains"));
-        String[] ip = optStringArray(json.optJSONArray("ip"));
+        List<String> domains = optStringList(json.optJSONArray("domains"));
+        List<String> ip = optStringList(json.optJSONArray("ip"));
         return new NetworkDomainResponse(domains, ip);
     }
 
@@ -505,7 +503,7 @@ public abstract class GenericParser {
         }
         String method = json.optString("method");
         String url = json.optString("url");
-        String[] headers = optStringArray(json.optJSONArray("headers"));
+        List<String> headers = optStringList(json.optJSONArray("headers"));
         return new NetworkWebRequest(method, url, headers);
     }
 
@@ -514,7 +512,7 @@ public abstract class GenericParser {
             return new NetworkWebResponse();
         }
         String status = json.optString("status");
-        String[] headers = optStringArray(json.optJSONArray("headers"));
+        List<String> headers = optStringList(json.optJSONArray("headers"));
         return new NetworkWebResponse(status, headers);
     }
 
@@ -553,13 +551,13 @@ public abstract class GenericParser {
         return new Credentials(flow, protocol, host, port, username, password, emailTo);
     }
 
-    protected Credentials[] optCredentialsArray(JSONArray input) {
+    protected List<Credentials> optCredentialsArray(JSONArray input) {
+        List<Credentials> output = new ArrayList<>();
         if (input == null) {
-            return new Credentials[0];
+            return output;
         }
-        Credentials[] output = new Credentials[input.length()];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = getCredentials(input.optJSONObject(i));
+        for (int i = 0; i < input.length(); i++) {
+            output.add(getCredentials(input.optJSONObject(i)));
         }
         return output;
     }

@@ -16,6 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -29,8 +32,8 @@ public class TriageFile {
     private String sha256;
     private String sha512;
     private String ssdeep;
-    private String[] extensions;
-    private String[] tags;
+    private List<String> extensions;
+    private List<String> tags;
     private int depth;
     private String kind;
     private boolean selected;
@@ -48,8 +51,8 @@ public class TriageFile {
         sha256 = "";
         sha512 = "";
         ssdeep = "";
-        extensions = new String[0];
-        tags = new String[0];
+        extensions = new ArrayList<>();
+        tags = new ArrayList<>();
         depth = 0;
         kind = "";
         selected = false;
@@ -58,7 +61,7 @@ public class TriageFile {
         password = "";
     }
 
-    public TriageFile(String fileName, int fileSize, String md5, String sha1, String sha256, String sha512, String ssdeep, String[] extensions, String[] tags, int depth, String kind, boolean selected, String runAs, TriageFileMetaData metaData, String password) {
+    public TriageFile(String fileName, int fileSize, String md5, String sha1, String sha256, String sha512, String ssdeep, List<String> extensions, List<String> tags, int depth, String kind, boolean selected, String runAs, TriageFileMetaData metaData, String password) {
         empty = false;
         this.fileName = fileName;
         this.fileSize = fileSize;
@@ -133,19 +136,19 @@ public class TriageFile {
         this.ssdeep = ssdeep;
     }
 
-    public String[] getExtensions() {
+    public List<String> getExtensions() {
         return extensions;
     }
 
-    public void setExtensions(String[] extensions) {
+    public void setExtensions(List<String> extensions) {
         this.extensions = extensions;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

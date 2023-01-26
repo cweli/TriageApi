@@ -16,7 +16,9 @@
  */
 package triageapi.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,25 +28,25 @@ import java.util.Map;
 public class Config {
 
     private String family;
-    private String[] tags;
+    private List<String> tags;
     private String rule;
-    private String[] c2;
-    private String[] decoy;
+    private List<String> c2;
+    private List<String> decoy;
     private String version;
     private String botnet;
     private String campaign;
-    private String[] mutex;
-    private String[] wallet;
-    private String[] dns;
-    private Key[] keys;
-    private String[] webInject;
-    private String[] commandLines;
+    private List<String> mutex;
+    private List<String> wallet;
+    private List<String> dns;
+    private List<Key> keys;
+    private List<String> webInject;
+    private List<String> commandLines;
     private String listenAddr;
     private int listenPort;
-    private String[] listenFor;
+    private List<String> listenFor;
     private byte[][] shellcode;
-    private String[] extractedPe;
-    private Credentials[] credentials;
+    private List<String> extractedPe;
+    private List<Credentials> credentials;
     private Map<String, String> attributes;
     private String raw;
     private boolean empty;
@@ -52,30 +54,30 @@ public class Config {
     public Config() {
         empty = true;
         family = "";
-        tags = new String[0];
+        tags = new ArrayList<>();
         rule = "";
-        c2 = new String[0];
-        decoy = new String[0];
+        c2 = new ArrayList<>();
+        decoy = new ArrayList<>();
         version = "";
         botnet = "";
         campaign = "";
-        mutex = new String[0];
-        dns = new String[0];
-        wallet = new String[0];
-        keys = new Key[0];
-        webInject = new String[0];
-        commandLines = new String[0];
+        mutex = new ArrayList<>();
+        dns = new ArrayList<>();
+        wallet = new ArrayList<>();
+        keys = new ArrayList<>();
+        webInject = new ArrayList<>();
+        commandLines = new ArrayList<>();
         listenAddr = "";
         listenPort = -1;
-        listenFor = new String[0];
+        listenFor = new ArrayList<>();
         shellcode = new byte[0][0];
-        extractedPe = new String[0];
-        credentials = new Credentials[0];
+        extractedPe = new ArrayList<>();
+        credentials = new ArrayList<>();
         attributes = new HashMap<>();
         raw = "";
     }
 
-    public Config(String family, String[] tags, String rule, String[] c2, String[] decoy, String version, String botnet, String campaign, String[] mutex, String[] wallet, String[] dns, Key[] keys, String[] webInject, String[] commandLines, String listenAddr, int listenPort, String[] listenFor, byte[][] shellcode, String[] extractedPe, Credentials[] credentials, Map<String, String> attributes, String raw) {
+    public Config(String family, List<String> tags, String rule, List<String> c2, List<String> decoy, String version, String botnet, String campaign, List<String> mutex, List<String> wallet, List<String> dns, List<Key> keys, List<String> webInject, List<String> commandLines, String listenAddr, int listenPort, List<String> listenFor, byte[][] shellcode, List<String> extractedPe, List<Credentials> credentials, Map<String, String> attributes, String raw) {
         empty = false;
         this.family = family;
         this.tags = tags;
@@ -113,11 +115,11 @@ public class Config {
         this.family = family;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
@@ -129,19 +131,19 @@ public class Config {
         this.rule = rule;
     }
 
-    public String[] getC2() {
+    public List<String> getC2() {
         return c2;
     }
 
-    public void setC2(String[] c2) {
+    public void setC2(List<String> c2) {
         this.c2 = c2;
     }
 
-    public String[] getDecoy() {
+    public List<String> getDecoy() {
         return decoy;
     }
 
-    public void setDecoy(String[] decoy) {
+    public void setDecoy(List<String> decoy) {
         this.decoy = decoy;
     }
 
@@ -169,51 +171,51 @@ public class Config {
         this.campaign = campaign;
     }
 
-    public String[] getMutex() {
+    public List<String> getMutex() {
         return mutex;
     }
 
-    public void setMutex(String[] mutex) {
+    public void setMutex(List<String> mutex) {
         this.mutex = mutex;
     }
 
-    public String[] getDns() {
+    public List<String> getDns() {
         return dns;
     }
 
-    public void setDns(String[] dns) {
+    public void setDns(List<String> dns) {
         this.dns = dns;
     }
 
-    public String[] getWallet() {
+    public List<String> getWallet() {
         return wallet;
     }
 
-    public void setWallet(String[] wallet) {
+    public void setWallet(List<String> wallet) {
         this.wallet = wallet;
     }
 
-    public Key[] getKeys() {
+    public List<Key> getKeys() {
         return keys;
     }
 
-    public void setKeys(Key[] keys) {
+    public void setKeys(List<Key> keys) {
         this.keys = keys;
     }
 
-    public String[] getWebInject() {
+    public List<String> getWebInject() {
         return webInject;
     }
 
-    public void setWebInject(String[] webInject) {
+    public void setWebInject(List<String> webInject) {
         this.webInject = webInject;
     }
 
-    public String[] getCommandLines() {
+    public List<String> getCommandLines() {
         return commandLines;
     }
 
-    public void setCommandLines(String[] commandLines) {
+    public void setCommandLines(List<String> commandLines) {
         this.commandLines = commandLines;
     }
 
@@ -233,11 +235,11 @@ public class Config {
         this.listenPort = listenPort;
     }
 
-    public String[] getListenFor() {
+    public List<String> getListenFor() {
         return listenFor;
     }
 
-    public void setListenFor(String[] listenFor) {
+    public void setListenFor(List<String> listenFor) {
         this.listenFor = listenFor;
     }
 
@@ -249,19 +251,19 @@ public class Config {
         this.shellcode = shellcode;
     }
 
-    public String[] getExtractedPe() {
+    public List<String> getExtractedPe() {
         return extractedPe;
     }
 
-    public void setExtractedPe(String[] extractedPe) {
+    public void setExtractedPe(List<String> extractedPe) {
         this.extractedPe = extractedPe;
     }
 
-    public Credentials[] getCredentials() {
+    public List<Credentials> getCredentials() {
         return credentials;
     }
 
-    public void setCredentials(Credentials[] credentials) {
+    public void setCredentials(List<Credentials> credentials) {
         this.credentials = credentials;
     }
 
