@@ -1317,7 +1317,7 @@ public class TriageApi {
         Set<String> families = new HashSet<>();
 
         for (TriageOverview overview : overviews) {
-            families.addAll(Arrays.asList(overview.getAnalysis().getFamilies()));
+            families.addAll(Arrays.asList(overview.getAnalysis().getFamily()));
         }
 
         return families;

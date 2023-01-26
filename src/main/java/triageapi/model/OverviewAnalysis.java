@@ -23,21 +23,21 @@ package triageapi.model;
 public class OverviewAnalysis {
 
     private int score;
-    private String[] families;
+    private String[] family;
     private String[] tags;
     private boolean empty;
 
     public OverviewAnalysis() {
         empty = true;
         score = -1;
-        families = new String[0];
+        family = new String[0];
         tags = new String[0];
     }
 
-    public OverviewAnalysis(int score, String[] families, String[] tags) {
+    public OverviewAnalysis(int score, String[] family, String[] tags) {
         empty = false;
         this.score = score;
-        this.families = families;
+        this.family = family;
         this.tags = tags;
     }
 
@@ -49,12 +49,12 @@ public class OverviewAnalysis {
         this.score = score;
     }
 
-    public String[] getFamilies() {
-        return families;
+    public String[] getFamily() {
+        return family;
     }
 
-    public void setFamilies(String[] families) {
-        this.families = families;
+    public void setFamily(String[] family) {
+        this.family = family;
     }
 
     public String[] getTags() {

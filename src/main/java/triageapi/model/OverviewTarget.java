@@ -24,28 +24,28 @@ public class OverviewTarget extends TargetDesc {
 
     private String[] tasks;
     private String[] tags;
-    private String[] families;
+    private String[] family;
     private Signature[] signatures;
-    private OverviewIOCs overviewIOCs;
+    private OverviewIOCs iocs;
     private boolean empty;
 
     public OverviewTarget() {
         super();
         tasks = new String[0];
         tags = new String[0];
-        families = new String[0];
+        family = new String[0];
         signatures = new Signature[0];
-        overviewIOCs = new OverviewIOCs();
+        iocs = new OverviewIOCs();
         empty = true;
     }
 
     public OverviewTarget(TargetDesc targetDesc, String[] tasks, String[] tags, String[] families, Signature[] signatures, OverviewIOCs overviewIOCs) {
-        super(targetDesc.getId(), targetDesc.getScore(), targetDesc.getSubmitted(), targetDesc.getCompatCompleted(), targetDesc.getTarget(), targetDesc.getPick(), targetDesc.getType(), targetDesc.getSize(), targetDesc.getMd5(), targetDesc.getSha1(), targetDesc.getSha256(), targetDesc.getSha512(), targetDesc.getFileType(), targetDesc.getStaticTags(), targetDesc.getCompatFamily());
+        super(targetDesc.getId(), targetDesc.getScore(), targetDesc.getSubmitted(), targetDesc.getCompatCompleted(), targetDesc.getTarget(), targetDesc.getPick(), targetDesc.getType(), targetDesc.getSize(), targetDesc.getMd5(), targetDesc.getSha1(), targetDesc.getSha256(), targetDesc.getSha512(), targetDesc.getSsdeep(), targetDesc.getFileType(), targetDesc.getStaticTags(), targetDesc.getCompatFamily());
         this.tasks = tasks;
         this.tags = tags;
-        this.families = families;
+        this.family = families;
         this.signatures = signatures;
-        this.overviewIOCs = overviewIOCs;
+        this.iocs = overviewIOCs;
         empty = false;
     }
 
@@ -66,11 +66,11 @@ public class OverviewTarget extends TargetDesc {
     }
 
     public String[] getFamilies() {
-        return families;
+        return family;
     }
 
     public void setFamilies(String[] families) {
-        this.families = families;
+        this.family = families;
     }
 
     public Signature[] getSignatures() {
@@ -82,11 +82,11 @@ public class OverviewTarget extends TargetDesc {
     }
 
     public OverviewIOCs getOverviewIOCs() {
-        return overviewIOCs;
+        return iocs;
     }
 
     public void setOverviewIOCs(OverviewIOCs overviewIOCs) {
-        this.overviewIOCs = overviewIOCs;
+        this.iocs = overviewIOCs;
     }
 
     public boolean isEmpty() {

@@ -36,6 +36,8 @@ public class TaskSummary {
     private String taskName;
     private String failure;
     private int queueId;
+    private int sigs;
+    private int timeout;
     private String pick;
     private boolean empty;
 
@@ -55,10 +57,12 @@ public class TaskSummary {
         this.taskName = "";
         this.failure = "";
         this.queueId = -1;
+        this.sigs = -1;
+        this.timeout = -1;
         this.pick = "";
     }
 
-    public TaskSummary(String sample, String kind, String name, String status, String[] ttps, String[] tags, int score, String target, String backend, String resource, String platform, String taskName, String failure, int queueId, String pick) {
+    public TaskSummary(String sample, String kind, String name, String status, String[] ttps, String[] tags, int score, String target, String backend, String resource, String platform, String taskName, String failure, int queueId, String pick, int sigs, int timeout) {
         empty = false;
         this.sample = sample;
         this.kind = kind;
@@ -75,6 +79,8 @@ public class TaskSummary {
         this.failure = failure;
         this.queueId = queueId;
         this.pick = pick;
+        this.sigs = sigs;
+        this.timeout = timeout;
     }
 
     public boolean isEmpty() {

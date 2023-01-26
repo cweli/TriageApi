@@ -24,7 +24,7 @@ public class OverviewSample extends TargetDesc {
 
     private String created;
     private String completed;
-    private OverviewIOCs overviewIOCs;
+    private OverviewIOCs iocs;
     private boolean empty;
 
     public OverviewSample() {
@@ -32,15 +32,15 @@ public class OverviewSample extends TargetDesc {
         empty = true;
         created = "";
         completed = "";
-        overviewIOCs = new OverviewIOCs();
+        iocs = new OverviewIOCs();
     }
 
-    public OverviewSample(TargetDesc targetDesc, String created, String completed, OverviewIOCs overviewIOCs) {
-        super(targetDesc.getId(), targetDesc.getScore(), targetDesc.getSubmitted(), targetDesc.getCompatCompleted(), targetDesc.getTarget(), targetDesc.getPick(), targetDesc.getType(), targetDesc.getSize(), targetDesc.getMd5(), targetDesc.getSha1(), targetDesc.getSha256(), targetDesc.getSha512(), targetDesc.getFileType(), targetDesc.getStaticTags(), targetDesc.getCompatFamily());
+    public OverviewSample(TargetDesc targetDesc, String created, String completed, OverviewIOCs iocs) {
+        super(targetDesc.getId(), targetDesc.getScore(), targetDesc.getSubmitted(), targetDesc.getCompatCompleted(), targetDesc.getTarget(), targetDesc.getPick(), targetDesc.getType(), targetDesc.getSize(), targetDesc.getMd5(), targetDesc.getSha1(), targetDesc.getSha256(), targetDesc.getSha512(), targetDesc.getSsdeep(), targetDesc.getFileType(), targetDesc.getStaticTags(), targetDesc.getCompatFamily());
         empty = false;
         this.created = created;
         this.completed = completed;
-        this.overviewIOCs = overviewIOCs;
+        this.iocs = iocs;
     }
 
     public String getCreated() {
@@ -60,11 +60,11 @@ public class OverviewSample extends TargetDesc {
     }
 
     public OverviewIOCs getOverviewIOCs() {
-        return overviewIOCs;
+        return iocs;
     }
 
     public void setOverviewIOCs(OverviewIOCs overviewIOCs) {
-        this.overviewIOCs = overviewIOCs;
+        this.iocs = overviewIOCs;
     }
 
     public boolean isEmpty() {

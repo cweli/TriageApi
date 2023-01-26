@@ -268,12 +268,13 @@ public abstract class GenericParser {
         String sha1 = json.optString("sha1");
         String sha256 = json.optString("sha256");
         String sha512 = json.optString("sha512");
+        String ssdeep = json.optString("ssdeep");
         String fileType = json.optString("filetype");
         //static_tags
         String[] staticTags = optStringArray(json.optJSONArray("static_tags"));
         String compatFamily = json.optString("family");
 
-        return new TargetDesc(id, score, submitted, compatCompleted, target, pick, type, size, md5, sha1, sha256, sha512, fileType, staticTags, compatFamily);
+        return new TargetDesc(id, score, submitted, compatCompleted, target, pick, type, size, md5, sha1, sha256, sha512, ssdeep, fileType, staticTags, compatFamily);
     }
 
     protected ReportTaskFailure getReportTaskFailure(JSONObject json) {
@@ -417,6 +418,7 @@ public abstract class GenericParser {
         String botnet = json.optString("botnet");
         String campaign = json.optString("campaign");
         String[] mutex = optStringArray(json.optJSONArray("mutex"));
+        String[] wallet = optStringArray(json.optJSONArray("wallet"));
         String[] dns = optStringArray(json.optJSONArray("dns"));
         Key[] keys = optKeyArray(json.optJSONArray("keys"));
         String[] webInject = optStringArray(json.optJSONArray("webinject"));
@@ -428,7 +430,8 @@ public abstract class GenericParser {
         Credentials[] credentials = optCredentialsArray(json.optJSONArray("credentials"));
         String[] extractedPe = optStringArray(json.optJSONArray("extracted_pe"));
         Map<String, String> attributes = optMapStringString(json.optJSONObject("attr"));
-        return new Config(family, tags, rule, c2, decoy, version, botnet, campaign, mutex, dns, keys, webInject, commandLines, listenAddr, listenPort, listenFor, shellcode, extractedPe, credentials, attributes);
+        String raw = json.optString("raw");
+        return new Config(family, tags, rule, c2, decoy, version, botnet, campaign, mutex, wallet, dns, keys, webInject, commandLines, listenAddr, listenPort, listenFor, shellcode, extractedPe, credentials, attributes, raw);
     }
 
     protected Map<String, String> optMapStringString(JSONObject json) {
@@ -545,8 +548,9 @@ public abstract class GenericParser {
         int port = json.optInt("port");
         String username = json.optString("username");
         String password = json.optString("password");
+        String emailTo = json.optString("email_to");
 
-        return new Credentials(flow, protocol, host, port, username, password);
+        return new Credentials(flow, protocol, host, port, username, password, emailTo);
     }
 
     protected Credentials[] optCredentialsArray(JSONArray input) {

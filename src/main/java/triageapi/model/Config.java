@@ -34,6 +34,7 @@ public class Config {
     private String botnet;
     private String campaign;
     private String[] mutex;
+    private String[] wallet;
     private String[] dns;
     private Key[] keys;
     private String[] webInject;
@@ -45,7 +46,7 @@ public class Config {
     private String[] extractedPe;
     private Credentials[] credentials;
     private Map<String, String> attributes;
-
+    private String raw;
     private boolean empty;
 
     public Config() {
@@ -60,6 +61,7 @@ public class Config {
         campaign = "";
         mutex = new String[0];
         dns = new String[0];
+        wallet = new String[0];
         keys = new Key[0];
         webInject = new String[0];
         commandLines = new String[0];
@@ -70,9 +72,10 @@ public class Config {
         extractedPe = new String[0];
         credentials = new Credentials[0];
         attributes = new HashMap<>();
+        raw = "";
     }
 
-    public Config(String family, String[] tags, String rule, String[] c2, String[] decoy, String version, String botnet, String campaign, String[] mutex, String[] dns, Key[] keys, String[] webInject, String[] commandLines, String listenAddr, int listenPort, String[] listenFor, byte[][] shellcode, String[] extractedPe, Credentials[] credentials, Map<String, String> attributes) {
+    public Config(String family, String[] tags, String rule, String[] c2, String[] decoy, String version, String botnet, String campaign, String[] mutex, String[] wallet, String[] dns, Key[] keys, String[] webInject, String[] commandLines, String listenAddr, int listenPort, String[] listenFor, byte[][] shellcode, String[] extractedPe, Credentials[] credentials, Map<String, String> attributes, String raw) {
         empty = false;
         this.family = family;
         this.tags = tags;
@@ -83,6 +86,7 @@ public class Config {
         this.botnet = botnet;
         this.campaign = campaign;
         this.mutex = mutex;
+        this.wallet = wallet;
         this.dns = dns;
         this.keys = keys;
         this.webInject = webInject;
@@ -94,6 +98,7 @@ public class Config {
         this.extractedPe = extractedPe;
         this.credentials = credentials;
         this.attributes = attributes;
+        this.raw = raw;
     }
 
     public boolean isEmpty() {
@@ -180,6 +185,14 @@ public class Config {
         this.dns = dns;
     }
 
+    public String[] getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(String[] wallet) {
+        this.wallet = wallet;
+    }
+
     public Key[] getKeys() {
         return keys;
     }
@@ -259,5 +272,8 @@ public class Config {
     public void setAttributes(Map<String, String> attributes) {
         this.attributes = attributes;
     }
+
+    public String getRaw() {return raw;}
+    public void setRaw(String raw) { this.raw = raw;}
 
 }

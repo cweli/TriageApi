@@ -60,7 +60,7 @@ public class TriageOverviewParser extends GenericParser {
         OverviewSample sample = getOverviewSample(json.optJSONObject("sample"));
         TaskSummary[] tasks = optTaskSummaryArray(json.optJSONObject("tasks"));
         OverviewAnalysis analysis = getOverviewAnalysis(json.optJSONObject("analysis"));
-        OverviewTarget[] targets = optOverviewTargetArray(json.getJSONArray("targets"));
+        OverviewTarget[] targets = optOverviewTargetArray(json.optJSONArray("targets"));
         ReportTaskFailure[] errors = optReportTaskFailureArray(json.optJSONArray("errors"));
         Signature[] signatures = optSignatureArray(json.optJSONArray("signatures"));
         OverviewExtracted[] extracted = optOverviewExtractedArray(json.optJSONArray("extracted"));
@@ -165,8 +165,10 @@ public class TriageOverviewParser extends GenericParser {
         String failure = json.optString("failure");
         int queueId = json.optInt("queue_id");
         String pick = json.optString("pick");
+        int sigs = json.optInt("sigs");
+        int timeout = json.optInt("timeout");
 
-        return new TaskSummary(sample, kind, name, status, ttps, tags, score, target, backend, resource, platform, taskName, failure, queueId, pick);
+        return new TaskSummary(sample, kind, name, status, ttps, tags, score, target, backend, resource, platform, taskName, failure, queueId, pick, sigs, timeout);
     }
 
     protected OverviewSample getOverviewSample(JSONObject json) {

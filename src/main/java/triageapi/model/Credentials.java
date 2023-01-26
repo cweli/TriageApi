@@ -25,6 +25,8 @@ public class Credentials {
     private int flow;
     private String protocol;
     private String host;
+
+    private String emailTo;
     private int port;
     private String username;
     private String password;
@@ -38,9 +40,10 @@ public class Credentials {
         username = "";
         password = "";
         empty = true;
+        emailTo = "";
     }
 
-    public Credentials(int flow, String protocol, String host, int port, String username, String password) {
+    public Credentials(int flow, String protocol, String host, int port, String username, String password, String emailTo) {
         this.flow = flow;
         this.protocol = protocol;
         this.host = host;
@@ -48,6 +51,7 @@ public class Credentials {
         this.username = username;
         this.password = password;
         this.empty = false;
+        this.emailTo = emailTo;
     }
 
     public int getFlow() {
@@ -97,4 +101,8 @@ public class Credentials {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmailTo() { return emailTo; }
+
+    public void setEmailTo(String emailTo) { this.emailTo = emailTo; }
 }
