@@ -19,6 +19,8 @@ package triageapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -32,6 +34,8 @@ public class Signature {
     private List<String> tags;
     private List<Indicator> indicators;
     private String yaraRule;
+
+    @SerializedName("desc")
     private String description;
     private String url;
     private boolean empty;

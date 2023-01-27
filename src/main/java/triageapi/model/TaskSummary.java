@@ -19,6 +19,8 @@ package triageapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -36,6 +38,8 @@ public class TaskSummary {
     private String backend;
     private String resource;
     private String platform;
+
+    @SerializedName("task_name")
     private String taskName;
     private String failure;
     private int queueId;

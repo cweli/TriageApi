@@ -17,7 +17,9 @@
 package triageapi.json;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,7 +62,7 @@ public class TriageOverviewParser extends GenericParser {
 
         String version = json.optString("version");
         OverviewSample sample = getOverviewSample(json.optJSONObject("sample"));
-        List<TaskSummary> tasks = optTaskSummaryList(json.optJSONObject("tasks"));
+        Map<String, TaskSummary> tasks = optTaskSummaryList(json.optJSONObject("tasks"));
         OverviewAnalysis analysis = getOverviewAnalysis(json.optJSONObject("analysis"));
         List<OverviewTarget> targets = optOverviewTargetList(json.optJSONArray("targets"));
         List<ReportTaskFailure> errors = optReportTaskFailureList(json.optJSONArray("errors"));
@@ -130,8 +132,8 @@ public class TriageOverviewParser extends GenericParser {
         return new OverviewAnalysis(score, families, tags);
     }
 
-    protected List<TaskSummary> optTaskSummaryList(JSONObject input) {
-        List<TaskSummary> output = new ArrayList<>();
+    protected Map<String, TaskSummary> optTaskSummaryList(JSONObject input) {
+        Map<String, TaskSummary> output = new HashMap<>();
         if (input == null) {
             return output;
         }
@@ -139,7 +141,7 @@ public class TriageOverviewParser extends GenericParser {
 
         for (String key : keySet) {
             JSONObject x = input.optJSONObject(key);
-            output.add(getTaskSummary(x));
+            output.put(key, getTaskSummary(x));
         }
 
         return output;

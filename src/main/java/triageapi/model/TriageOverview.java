@@ -17,7 +17,9 @@
 package triageapi.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An overview of the given submission, including information from all reports
@@ -29,7 +31,7 @@ public class TriageOverview {
 
     private String version;
     private OverviewSample sample;
-    private List<TaskSummary> tasks;
+    private Map<String, TaskSummary> tasks;
     private OverviewAnalysis analysis;
     private List<OverviewTarget> targets;
     private List<ReportTaskFailure> errors;
@@ -41,7 +43,7 @@ public class TriageOverview {
         empty = true;
         this.version = "";
         this.sample = new OverviewSample();
-        this.tasks = new ArrayList<>();
+        this.tasks = new HashMap<>();
         this.analysis = new OverviewAnalysis();
         this.targets = new ArrayList<>();
         this.errors = new ArrayList<>();
@@ -49,7 +51,7 @@ public class TriageOverview {
         this.extracted = new ArrayList<>();
     }
 
-    public TriageOverview(String version, OverviewSample sample, List<TaskSummary> tasks, OverviewAnalysis analysis, List<OverviewTarget> targets, List<ReportTaskFailure> errors, List<Signature> signatures, List<OverviewExtracted> extracted) {
+    public TriageOverview(String version, OverviewSample sample, Map<String, TaskSummary> tasks, OverviewAnalysis analysis, List<OverviewTarget> targets, List<ReportTaskFailure> errors, List<Signature> signatures, List<OverviewExtracted> extracted) {
         empty = false;
         this.version = version;
         this.sample = sample;
@@ -78,11 +80,11 @@ public class TriageOverview {
         this.sample = sample;
     }
 
-    public List<TaskSummary> getTasks() {
+    public Map<String, TaskSummary> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<TaskSummary> tasks) {
+    public void setTasks(Map<String, TaskSummary> tasks) {
         this.tasks = tasks;
     }
 

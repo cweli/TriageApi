@@ -69,6 +69,6 @@ public class OverviewIOCs {
     }
 
     public boolean isEmpty() {
-        return empty;
+        return empty || (getUrls().size() == 0 && getDomains().size() == 0 && getIps().size() == 0);
     }
 }

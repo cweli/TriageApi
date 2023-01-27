@@ -16,6 +16,8 @@
  */
 package triageapi.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -23,6 +25,7 @@ package triageapi.model;
 public class Indicator {
 
     private String ioc;
+    @SerializedName("desc")
     private String description;
     private int at;
     private int sourcePid;
@@ -32,6 +35,7 @@ public class Indicator {
     private int flow;
     private String dumpFile;
     private String resource;
+    @SerializedName("yara_rule")
     private String yaraRule;
     private boolean empty;
 

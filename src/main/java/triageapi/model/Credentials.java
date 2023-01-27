@@ -16,6 +16,8 @@
  */
 package triageapi.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -25,7 +27,7 @@ public class Credentials {
     private int flow;
     private String protocol;
     private String host;
-
+    @SerializedName("email_to")
     private String emailTo;
     private int port;
     private String username;
