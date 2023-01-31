@@ -57,7 +57,7 @@ public class Ransom {
     }
 
     public boolean isEmpty() {
-        return empty;
+        return empty || (emails.isEmpty() && wallets.isEmpty() && urls.isEmpty() && contact.isEmpty() && note.isEmpty() && family.isEmpty() && target.isEmpty());
     }
 
     public String getFamily() {

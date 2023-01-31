@@ -107,4 +107,8 @@ public class Credentials {
     public String getEmailTo() { return emailTo; }
 
     public void setEmailTo(String emailTo) { this.emailTo = emailTo; }
+
+    public boolean isEmpty() {
+        return empty || (protocol.isEmpty() && host.isEmpty() && username.isEmpty() && password.isEmpty() && emailTo.isEmpty());
+    }
 }

@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Max 'Libra' Kersten [@Libranalysis, https://maxkersten.nl]
@@ -47,6 +49,7 @@ public class Config {
     private byte[][] shellcode;
     private List<String> extractedPe;
     private List<Credentials> credentials;
+    @SerializedName("attr")
     private Map<String, String> attributes;
     private String raw;
     private boolean empty;

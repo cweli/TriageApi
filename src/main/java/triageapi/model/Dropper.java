@@ -51,7 +51,7 @@ public class Dropper {
     }
 
     public boolean isEmpty() {
-        return empty;
+        return empty || (family.isEmpty() && language.isEmpty() && source.isEmpty() && deobfuscated.isEmpty() && urls.isEmpty());
     }
 
     public String getFamily() {
